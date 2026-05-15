@@ -20,9 +20,6 @@
     gh
     lazygit
 
-    # Editor
-    helix
-
     # Structured data
     jq
 
