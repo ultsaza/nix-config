@@ -43,4 +43,11 @@
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.bat.enable = true;
+
+  # Go toolchain. Replaces the manual /usr/local/go tarball (go1.25.4) and the
+  # apt golang-1.22 packages — Nix is now the single source of truth, kept
+  # current via `nix flake update`. GOPATH stays the default (~/go); tools
+  # installed with `go install` (gopls, staticcheck, …) live in ~/go/bin, which
+  # ~/.zshrc already puts on PATH and is complementary to this.
+  programs.go.enable = true;
 }
