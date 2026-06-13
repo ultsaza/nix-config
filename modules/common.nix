@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # Baseline shared across every machine. Host modules only carry differences.
 
@@ -28,6 +28,11 @@
     tealdeer
     hyperfine
     tokei
+  ] ++ lib.optionals pkgs.stdenv.isLinux [
+    # WireGuard CLI: `wg` for keygen/status. Connection lifecycle is handled
+    # by NetworkManager (built-in support since NM 1.16). macOS uses the
+    # official WireGuard.app instead, so this stays Linux-only.
+    wireguard-tools
   ];
 
   programs.direnv = {
