@@ -33,6 +33,14 @@
     # by NetworkManager (built-in support since NM 1.16). macOS uses the
     # official WireGuard.app instead, so this stays Linux-only.
     wireguard-tools
+
+    # hyprsunset: Hyprland night-light (color-temperature) daemon. This installs
+    # only the binary — the chezmoi-managed ~/.config/hypr/scripts/Hyprsunset.sh
+    # (Super+N toggle, exec-once init) calls it directly and no-ops without it.
+    # NOT using the `services.hyprsunset` HM module on purpose: it would manage a
+    # systemd unit + config and fight the chezmoi script's own nohup/pkill
+    # lifecycle. Wayland/Hyprland-only, so Linux-only.
+    hyprsunset
   ];
 
   programs.direnv = {
